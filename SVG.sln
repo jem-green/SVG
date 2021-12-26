@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SVGConsole", "SVGConsole\SVGConsole.csproj", "{237E4553-AB2D-4693-A00C-CC728A8B4757}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", "{254666C8-72A2-4C8A-866D-3050C364D53B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShapeLibrary", "ShapeLibrary", "{9A8B8606-C829-4742-8C73-8593B651907B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "netcoreapp3.1", "netcoreapp3.1", "{FBE27298-4DA2-40C6-82B6-7F5C1E3BE22F}"
+	ProjectSection(SolutionItems) = preProject
+		ThirdParty\ShapeLibrary\netcoreapp3.1\ShapeLibrary.dll = ThirdParty\ShapeLibrary\netcoreapp3.1\ShapeLibrary.dll
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SVGLibrary", "SVGLibrary\SVGLibrary.csproj", "{0E8B807D-ED95-456F-801B-0CF6CE2CAC70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SVGTest", "SVGTest\SVGTest.csproj", "{4D81FEA7-9DF9-4F4E-BC2D-BE11FB5937B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{237E4553-AB2D-4693-A00C-CC728A8B4757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{237E4553-AB2D-4693-A00C-CC728A8B4757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{237E4553-AB2D-4693-A00C-CC728A8B4757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{237E4553-AB2D-4693-A00C-CC728A8B4757}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E8B807D-ED95-456F-801B-0CF6CE2CAC70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E8B807D-ED95-456F-801B-0CF6CE2CAC70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E8B807D-ED95-456F-801B-0CF6CE2CAC70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E8B807D-ED95-456F-801B-0CF6CE2CAC70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D81FEA7-9DF9-4F4E-BC2D-BE11FB5937B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D81FEA7-9DF9-4F4E-BC2D-BE11FB5937B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D81FEA7-9DF9-4F4E-BC2D-BE11FB5937B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D81FEA7-9DF9-4F4E-BC2D-BE11FB5937B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9A8B8606-C829-4742-8C73-8593B651907B} = {254666C8-72A2-4C8A-866D-3050C364D53B}
+		{FBE27298-4DA2-40C6-82B6-7F5C1E3BE22F} = {9A8B8606-C829-4742-8C73-8593B651907B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95859023-5998-40DC-A51B-B64251911DC7}
+	EndGlobalSection
+EndGlobal
