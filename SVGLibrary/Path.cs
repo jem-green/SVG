@@ -85,6 +85,30 @@ namespace SVGLibrary
             EndOfPath = 99
         }
 
+        public struct Distance
+        {
+            double _d;
+            public Distance(double d)
+            {
+                _d = d;
+            }
+            public double D
+            {
+                set
+                {
+                    _d = value;
+                }
+                get
+                {
+                    return (_d);
+                }
+            }
+
+            public override string ToString()
+            {
+                return ("D=" + _d);
+            }
+        }
 
         public struct Point
         {
@@ -190,10 +214,7 @@ namespace SVGLibrary
             List<Segment> segments = new List<Segment>();
             Point point = new Point(0, 0);
             SegmentType type = SegmentType.None;
-            int item = 0;
-            bool exit = false;
             _pathData = pathData;
-            //Segment element;
 
             NextElement();
             do
@@ -203,12 +224,6 @@ namespace SVGLibrary
                 switch (type)
                 {
                     case SegmentType.MoveToRelative:
-                        {
-                            Debug.WriteLine("Decode MoveToRelative");
-                            NextElement();
-                            GetCoordinates(type, segments);
-                            break;
-                        }
                     case SegmentType.MoveToAbsolute:
                         {
                             Debug.WriteLine("Decode MoveToAbsolute");
@@ -216,10 +231,34 @@ namespace SVGLibrary
                             GetCoordinates(type, segments);
                             break;
                         }
-                    case SegmentType.ClosePathAbsolute:
                     case SegmentType.ClosePathRelative:
+                    case SegmentType.ClosePathAbsolute:
                         {
                             Debug.WriteLine("Decode ClosePathAbsolute");
+                            break;
+                        }
+                    case SegmentType.LineToRelative:
+                    case SegmentType.LineToAbsolute:
+                        {
+                            Debug.WriteLine("Decode LineToAbsolute");
+                            NextElement();
+                            GetCoordinates(type, segments);
+                            break;
+                        }
+                    case SegmentType.HorizontalLineToRelative:
+                    case SegmentType.HorizontalLineToAbsolute:
+                        {
+                            Debug.WriteLine("Decode HorizontalLineToAbsolute");
+                            NextElement();
+                            GetDistances(type, segments);
+                            break;
+                        }
+                    case SegmentType.VerticalLineToRelative:
+                    case SegmentType.VerticalLineToAbsolute:
+                        {
+                            Debug.WriteLine("Decode VerticalLineToAbsolute");
+                            NextElement();
+                            GetDistances(type, segments);
                             break;
                         }
                     default:
@@ -269,6 +308,28 @@ namespace SVGLibrary
             }
             while (GetElement() == Path.SegmentType.Number);
             Debug.WriteLine("Out GetCoordinates()");
+        }
+
+        private void GetDistances(SegmentType type, List<Segment> segments)
+        {
+            Debug.WriteLine("In GetDistances()");
+            Distance distance;
+            Segment segment;
+            do
+            {
+                Debug.WriteLine("GetDistance Loop");
+                if (GetElement() == SegmentType.Number)
+                {
+                    distance = new Distance();
+                    distance.D = GetNumber();
+                    segment = new Segment(type, distance);
+                    segments.Add(segment);
+                    Debug.WriteLine("Add distance=" + distance.ToString());
+                    NextElement();
+                }
+            }
+            while (GetElement() == Path.SegmentType.Number);
+            Debug.WriteLine("Out GetDistances()");
         }
 
 
