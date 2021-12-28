@@ -580,9 +580,9 @@ namespace SVGLibrary
 		/// The unsupported element is used when during the parsing of a file an unknown
 		/// element tag is found.
 		/// </remarks>
-		public Unsupported AddUnsupported(SVGElement parent, string sName)
+		public SVGUnsupported AddUnsupported(SVGElement parent, string sName)
 		{
-			Unsupported uns = new Unsupported(this, sName);
+			SVGUnsupported uns = new SVGUnsupported(this, sName);
 			
 			AddElement(parent, uns);
 			
@@ -622,9 +622,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public Text AddText(SVGElement parent)
+		public SVGText AddText(SVGElement parent)
 		{
-			Text txt = new Text(this);
+			SVGText txt = new SVGText(this);
 			
 			AddElement(parent, txt);
 			

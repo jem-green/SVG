@@ -16,9 +16,9 @@ namespace SVGLibrary
 	/// This class does not represent any SVG element. It is used when parsing an SVG file an
 	/// unknown element is found.
 	/// </summary>
-	public class Unsupported : SVGElement
+	public class SVGUnsupported : SVGElement
 	{
-		public Unsupported(SVGDocument doc, string sName):base(doc)
+		public SVGUnsupported(SVGDocument doc, string sName):base(doc)
 		{
 			m_sElementName = sName + ":unsupported";
 			m_ElementType = SvgElementType.typeUnsupported;

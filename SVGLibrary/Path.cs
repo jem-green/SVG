@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SVGLibrary
 {
-    public class Path
+    public static class Path
     {
         /*
          * svg_path::= wsp* moveto? (moveto drawto_command*)?
@@ -57,10 +57,10 @@ namespace SVGLibrary
 
         #region Fields
 
-        string _pathData = "";
-        int _ptr = 0;
-        int _nextPtr = 0;
-        SegmentType _currentSegment;
+        private static string _pathData = "";
+        private static int _ptr = 0;
+        private static int _nextPtr = 0;
+        private static SegmentType _currentSegment;
 
         public enum SegmentType
         {
@@ -183,38 +183,34 @@ namespace SVGLibrary
             }
             public override string ToString()
             {
-                return ("type=" + _segmentType.ToString() + ",data=" + _data.ToString());
+                if (_data == null)
+                {
+                    return ("type=" + _segmentType.ToString());
+                }
+                else
+                {
+                    return ("type=" + _segmentType.ToString() + ",data=(" + _data.ToString() + ")");
+                }
             }
         }
 
         #endregion
         #region Constructors
 
-        public Path()
-        {
-        }
-
-        public Path(string pathData)
-        {
-            _pathData = pathData;
-        }
-
         #endregion
         #region Peroperties
         #endregion
         #region Methods
 
-        public List<Segment> Decode()
-        {
-            return (Decode(_pathData));
-        }
-
-        public List<Segment> Decode(string pathData)
+        public static List<Segment> Decode(string pathData)
         {
             List<Segment> segments = new List<Segment>();
             Point point = new Point(0, 0);
             SegmentType type = SegmentType.None;
             _pathData = pathData;
+            _ptr = 0;
+            _nextPtr = 0;
+            _currentSegment = SegmentType.None;
 
             NextElement();
             do
@@ -226,7 +222,7 @@ namespace SVGLibrary
                     case SegmentType.MoveToRelative:
                     case SegmentType.MoveToAbsolute:
                         {
-                            Debug.WriteLine("Decode MoveToAbsolute");
+                            Debug.WriteLine("Decode MoveTo");
                             NextElement();
                             GetCoordinates(type, segments);
                             break;
@@ -234,13 +230,16 @@ namespace SVGLibrary
                     case SegmentType.ClosePathRelative:
                     case SegmentType.ClosePathAbsolute:
                         {
-                            Debug.WriteLine("Decode ClosePathAbsolute");
+                            Debug.WriteLine("Decode ClosePath");
+                            NextElement();
+                            Segment segment = new Segment(type, null);
+                            segments.Add(segment);
                             break;
                         }
                     case SegmentType.LineToRelative:
                     case SegmentType.LineToAbsolute:
                         {
-                            Debug.WriteLine("Decode LineToAbsolute");
+                            Debug.WriteLine("Decode LineTo");
                             NextElement();
                             GetCoordinates(type, segments);
                             break;
@@ -248,7 +247,7 @@ namespace SVGLibrary
                     case SegmentType.HorizontalLineToRelative:
                     case SegmentType.HorizontalLineToAbsolute:
                         {
-                            Debug.WriteLine("Decode HorizontalLineToAbsolute");
+                            Debug.WriteLine("Decode HorizontalLineTo");
                             NextElement();
                             GetDistances(type, segments);
                             break;
@@ -256,7 +255,7 @@ namespace SVGLibrary
                     case SegmentType.VerticalLineToRelative:
                     case SegmentType.VerticalLineToAbsolute:
                         {
-                            Debug.WriteLine("Decode VerticalLineToAbsolute");
+                            Debug.WriteLine("Decode VerticalLineTo");
                             NextElement();
                             GetDistances(type, segments);
                             break;
@@ -271,7 +270,10 @@ namespace SVGLibrary
             return (segments);
         }
 
-        private void GetCoordinates(SegmentType type, List<Segment> segments)
+        #endregion
+        #region Private
+
+        private static void GetCoordinates(SegmentType type, List<Segment> segments)
         {
             Debug.WriteLine("In GetCoordinates()");
             Point point = new Point(0, 0);
@@ -310,7 +312,7 @@ namespace SVGLibrary
             Debug.WriteLine("Out GetCoordinates()");
         }
 
-        private void GetDistances(SegmentType type, List<Segment> segments)
+        private static void GetDistances(SegmentType type, List<Segment> segments)
         {
             Debug.WriteLine("In GetDistances()");
             Distance distance;
@@ -332,41 +334,40 @@ namespace SVGLibrary
             Debug.WriteLine("Out GetDistances()");
         }
 
-
-        SegmentType GetElement()
+        private static SegmentType GetElement()
         {
             Debug.WriteLine("Segment=" + _currentSegment);
             return (_currentSegment);
         }
 
-        private void NextElement()
+        private static void NextElement()
         {
-            if ((_ptr + 1 >= _pathData.Length) || (_pathData[_ptr] == '\0'))
+            _ptr = _nextPtr;
+
+            if ((_ptr + 1 > _pathData.Length) || (_pathData[_ptr] == '\0'))
             {
                 _currentSegment = SegmentType.EndOfPath;
             }
             else
             {
-                _ptr = _nextPtr;
                 while (_pathData[_ptr] == ' ')
                 {
                     ++_ptr;
                 }
-                if ((_ptr + 1 >= _pathData.Length) || (_pathData[_ptr] == '\0'))
-                {
-                    _currentSegment = SegmentType.EndOfPath;
-                }
-                else
-                {
-                    _currentSegment = GetNextElement();
-                }
+                _currentSegment = GetNextElement();
             }
+
         }
 
-        private SegmentType GetNextElement()
+        private static SegmentType GetNextElement()
         {
             SegmentType elementType = SegmentType.None;
-            if (_pathData[_ptr] == ',')
+            if (_ptr >= _pathData.Length)
+            {
+                elementType = SegmentType.EndOfPath;
+                _nextPtr = _pathData.Length + 1;    // try pudtting this beyond the end
+            }
+            else if (_pathData[_ptr] == ',')
             {
                 elementType = SegmentType.Comma;
                 _nextPtr = _ptr + 1;
@@ -421,7 +422,7 @@ namespace SVGLibrary
                 elementType = SegmentType.VerticalLineToRelative;
                 _nextPtr = _ptr + 1;
             }
-            else if (_pathData[_ptr] == 'v')
+            else if (_pathData[_ptr] == 'V')
             {
                 elementType = SegmentType.VerticalLineToAbsolute;
                 _nextPtr = _ptr + 1;
@@ -433,7 +434,7 @@ namespace SVGLibrary
                 {
                     if ((_ptr + i) >= _pathData.Length)
                     {
-                        _nextPtr = _pathData.Length - 1;
+                        _nextPtr = _pathData.Length;
                         break;
                     }
                     else if ((_pathData[_ptr + i] == '.') || (_pathData[_ptr + i] == '-') || ((_pathData[_ptr + i] >= '0') && (_pathData[_ptr + i] <= '9')))
@@ -450,8 +451,7 @@ namespace SVGLibrary
             return (elementType);
         }
 
-
-        public double GetNumber()
+        public static double GetNumber()
         {
             bool terminal = false;
             string data = "";
@@ -459,11 +459,11 @@ namespace SVGLibrary
             int i = 0;
             do
             {
-                if ((_ptr == _pathData.Length) || (_pathData[_ptr] == '\0'))
+                if ((_ptr >= _pathData.Length) || (_pathData[_ptr] == '\0'))
                 {
                     terminal = true;
                 }
-                else if ((_pathData[_ptr + i] >= '0') && (_pathData[_ptr + i] >= '0'))
+                else if ((_pathData[_ptr + i] >= '0') && (_pathData[_ptr + i] <= '9'))
                 {
                     data = data + _pathData[_ptr + i];
                     i++;
@@ -495,10 +495,6 @@ namespace SVGLibrary
             }
             return (number);
         }
-
-        #endregion
-        #region Private
-
 
         #endregion
     }

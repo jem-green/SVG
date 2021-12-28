@@ -32,8 +32,8 @@
      showgrid="true"
      inkscape:window-width="1267"
      inkscape:window-height="877"
-     inkscape:window-x="24"
-     inkscape:window-y="0"
+     inkscape:window-x="1407"
+     inkscape:window-y="626"
      inkscape:window-maximized="0"
      showguides="true"
      inkscape:guide-bbox="true">
@@ -63,7 +63,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="M 10,10 H 40 V 40 H 10 Z"
        id="path28" />
   </g>

@@ -455,7 +455,7 @@ namespace SVGLibrary
 					}
 				case _SvgAttributeDataType.datatypePath:
                     {
-						// This where we could potentially parse the path data
+						// This where we could potentially parse the segment strucure
 						sValue = m_objValue.ToString();
 						break;
 					}

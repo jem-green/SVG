@@ -550,6 +550,7 @@ namespace SVGLibrary
 						case SVGAttribute._SvgAttributeDataType.datatypePath:
                             {
 								// This is where i would like to expand the path
+								//attr.Value = Path.Decode(sValue);
 								attr.Value = sValue;
 								break;
 							}

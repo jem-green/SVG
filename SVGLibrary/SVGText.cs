@@ -17,7 +17,7 @@ namespace SVGLibrary
 	/// <summary>
 	/// It represents the text SVG element.
 	/// </summary>
-	public class Text : SVGElement
+	public class SVGText : SVGElement
 	{
 		/// <summary>
 		/// Specifies a base URI other than the base URI of the document or external entity.
@@ -329,7 +329,7 @@ namespace SVGLibrary
 		/// It constructs a text element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Text(SVGDocument doc):base(doc)
+		public SVGText(SVGDocument doc):base(doc)
 		{
 			m_sElementName = "text";
 			m_bHasValue = true;
