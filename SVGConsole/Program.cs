@@ -179,6 +179,18 @@ namespace SVGConsole
                     Debug.WriteLine("Unknow Element " + element.GetType());
                 }
             }
+
+            shpDocument.Save("", "test");
+
+            // Test Loading
+
+            shpDocument = new SHPDocument();
+            shpDocument.Load("", "test");
+            foreach (IShape shape in shpDocument)
+            {
+                Console.WriteLine("loaded=" + shape.ToString());
+            }
+
         }
     }
 }

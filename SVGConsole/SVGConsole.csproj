@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <Reference Include="ShapeLibrary">
-      <HintPath>..\ThirdParty\ShapeLibrary\netcoreapp3.1\ShapeLibrary.dll</HintPath>
+      <HintPath>..\ThirdParty\shape\netcoreapp3.1\ShapeLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
 
