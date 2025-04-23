@@ -17,7 +17,7 @@ namespace SVGLibrary
 	/// <summary>
 	/// Summary description for SvgBasicShape.
 	/// </summary>
-	public class SVGBasicShape : SVGElement
+	public class BasicShape : Element
 	{
 		/// <summary>
 		/// Specifies a base URI other than the base URI of the document or external entity.
@@ -28,12 +28,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrCore_XmlBase);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrCore_XmlBase);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrCore_XmlBase, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrCore_XmlBase, value);
 			}
 		}
 
@@ -46,12 +46,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrCore_XmlLang);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrCore_XmlLang);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrCore_XmlLang, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrCore_XmlLang, value);
 			}
 		}
 
@@ -64,12 +64,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrCore_XmlSpace);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrCore_XmlSpace);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrCore_XmlSpace, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrCore_XmlSpace, value);
 			}
 		}
 
@@ -82,12 +82,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrStyle_Class);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrStyle_Class);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrStyle_Class, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrStyle_Class, value);
 			}
 		}
 
@@ -100,12 +100,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrStyle_Style);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrStyle_Style);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrStyle_Style, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrStyle_Style, value);
 			}
 		}
 
@@ -118,12 +118,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeColorValue(SVGAttribute._SvgAttribute.attrPaint_Color);
+				return GetAttributeColorValue(Attribute._SvgAttribute.attrPaint_Color);
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_Color, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_Color, value);
 			}
 		}
 
@@ -136,12 +136,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrOpacity_Opacity);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrOpacity_Opacity);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrOpacity_Opacity, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrOpacity_Opacity, value);
 			}
 		}
 
@@ -154,12 +154,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeColorValue(SVGAttribute._SvgAttribute.attrPaint_Fill);
+				return GetAttributeColorValue(Attribute._SvgAttribute.attrPaint_Fill);
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_Fill, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_Fill, value);
 			}
 		}
 
@@ -168,16 +168,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("Paint")]
 		[Description("It indicates the algorithm which is to be used to determine what parts of the canvas are included inside the shape.")]
-		public SVGAttribute._SvgFillRule FillRule
+		public Attribute._SvgFillRule FillRule
 		{
 			get	
 			{
-				return (SVGAttribute._SvgFillRule) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrPaint_FillRule);	
+				return (Attribute._SvgFillRule) GetAttributeIntValue(Attribute._SvgAttribute.attrPaint_FillRule);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_FillRule, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_FillRule, (int) value);
 			}
 		}
 
@@ -190,12 +190,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrOpacity_FillOpacity);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrOpacity_FillOpacity);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrOpacity_FillOpacity, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrOpacity_FillOpacity, value);
 			}
 		}
 
@@ -208,12 +208,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeColorValue(SVGAttribute._SvgAttribute.attrPaint_Stroke);
+				return GetAttributeColorValue(Attribute._SvgAttribute.attrPaint_Stroke);
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_Stroke, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_Stroke, value);
 			}
 		}
 
@@ -226,12 +226,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrOpacity_StrokeOpacity);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrOpacity_StrokeOpacity);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrOpacity_StrokeOpacity, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrOpacity_StrokeOpacity, value);
 			}
 		}
 
@@ -244,12 +244,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrPaint_StrokeWidth);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrPaint_StrokeWidth);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_StrokeWidth, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_StrokeWidth, value);
 			}
 		}
 
@@ -262,12 +262,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrPaint_StrokeDashArray);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrPaint_StrokeDashArray);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_StrokeDashArray, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_StrokeDashArray, value);
 			}
 		}
 
@@ -280,12 +280,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrPaint_StrokeDashOffSet);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrPaint_StrokeDashOffSet);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_StrokeDashOffSet, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_StrokeDashOffSet, value);
 			}
 		}
 
@@ -294,16 +294,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("Paint")]
 		[Description("It specifies the shape to be used at the end of open subpaths when they are stroked.")]
-		public SVGAttribute._SvgLineCap StrokeLineCap
+		public Attribute._SvgLineCap StrokeLineCap
 		{
 			get	
 			{
-				return (SVGAttribute._SvgLineCap) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrPaint_StrokeLineCap);	
+				return (Attribute._SvgLineCap) GetAttributeIntValue(Attribute._SvgAttribute.attrPaint_StrokeLineCap);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_StrokeLineCap, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_StrokeLineCap, (int) value);
 			}
 		}
 
@@ -312,16 +312,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("Paint")]
 		[Description("It specifies the shape to be used at the corners of paths or basic shapes when they are stroked.")]
-		public SVGAttribute._SvgLineJoin StrokeLineJoin
+		public Attribute._SvgLineJoin StrokeLineJoin
 		{
 			get	
 			{
-				return (SVGAttribute._SvgLineJoin) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrPaint_StrokeLineJoin);	
+				return (Attribute._SvgLineJoin) GetAttributeIntValue(Attribute._SvgAttribute.attrPaint_StrokeLineJoin);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_StrokeLineJoin, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_StrokeLineJoin, (int) value);
 			}
 		}
 
@@ -334,12 +334,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrPaint_StrokeMiterLimit);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrPaint_StrokeMiterLimit);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_StrokeMiterLimit, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_StrokeMiterLimit, value);
 			}
 		}
 
@@ -348,16 +348,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("Paint")]
 		[Description("It specifies the color space for gradient interpolations, color animations and alpha compositing.")]
-		public SVGAttribute._SvgColorInterpolation ColorInterpolation
+		public Attribute._SvgColorInterpolation ColorInterpolation
 		{
 			get	
 			{
-				return (SVGAttribute._SvgColorInterpolation) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrPaint_ColorInterpolation);	
+				return (Attribute._SvgColorInterpolation) GetAttributeIntValue(Attribute._SvgAttribute.attrPaint_ColorInterpolation);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_ColorInterpolation, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_ColorInterpolation, (int) value);
 			}
 		}
 
@@ -366,16 +366,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("Paint")]
 		[Description("It specifies the color space for imaging operations performed via filter effects.")]
-		public SVGAttribute._SvgColorInterpolation ColorInterpolationFilters
+		public Attribute._SvgColorInterpolation ColorInterpolationFilters
 		{
 			get	
 			{
-				return (SVGAttribute._SvgColorInterpolation) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrPaint_ColorInterpolationFilters);	
+				return (Attribute._SvgColorInterpolation) GetAttributeIntValue(Attribute._SvgAttribute.attrPaint_ColorInterpolationFilters);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_ColorInterpolationFilters, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_ColorInterpolationFilters, (int) value);
 			}
 		}
 
@@ -384,16 +384,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("Paint")]
 		[Description("It provides a hint to the SVG user agent about how to optimize its color interpolation and compositing operations.")]
-		public SVGAttribute._SvgColorRendering ColorRendering
+		public Attribute._SvgColorRendering ColorRendering
 		{
 			get	
 			{
-				return (SVGAttribute._SvgColorRendering) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrPaint_ColorRendering);	
+				return (Attribute._SvgColorRendering) GetAttributeIntValue(Attribute._SvgAttribute.attrPaint_ColorRendering);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrPaint_ColorRendering, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrPaint_ColorRendering, (int) value);
 			}
 		}
 
@@ -412,16 +412,16 @@ namespace SVGLibrary
 		/// </remarks>
 		[Category("Graphics")]
 		[Description("It control the visibility of the graphical element.")]
-		public SVGAttribute._SvgGraphicsDisplay Display
+		public Attribute._SvgGraphicsDisplay Display
 		{
 			get	
 			{
-				return (SVGAttribute._SvgGraphicsDisplay) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrGraphics_Display);	
+				return (Attribute._SvgGraphicsDisplay) GetAttributeIntValue(Attribute._SvgAttribute.attrGraphics_Display);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrGraphics_Display, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrGraphics_Display, (int) value);
 			}
 		}
 
@@ -430,16 +430,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("Graphics")]
 		[Description("It provides a hint how to make speed vs. quality tradeoffs as it performs image processing.")]
-		public SVGAttribute._SvgImageRendering ImageRendering
+		public Attribute._SvgImageRendering ImageRendering
 		{
 			get	
 			{
-				return (SVGAttribute._SvgImageRendering) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrGraphics_ImageRendering);	
+				return (Attribute._SvgImageRendering) GetAttributeIntValue(Attribute._SvgAttribute.attrGraphics_ImageRendering);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrGraphics_ImageRendering, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrGraphics_ImageRendering, (int) value);
 			}
 		}
 
@@ -448,16 +448,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("Graphics")]
 		[Description("It provides a hint about what tradeoffs to make as it renders vector graphics elements such as 'path' elements and basic shapes such as circles and rectangles.")]
-		public SVGAttribute._SvgShapeRendering ShapeRendering
+		public Attribute._SvgShapeRendering ShapeRendering
 		{
 			get	
 			{
-				return (SVGAttribute._SvgShapeRendering) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrGraphics_ShapeRendering);	
+				return (Attribute._SvgShapeRendering) GetAttributeIntValue(Attribute._SvgAttribute.attrGraphics_ShapeRendering);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrGraphics_ShapeRendering, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrGraphics_ShapeRendering, (int) value);
 			}
 		}
 
@@ -466,16 +466,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("Graphics")]
 		[Description("It provides a hint to the SVG user agent about how to optimize its color interpolation and compositing operations.")]
-		public SVGAttribute._SvgTextRendering TextRendering
+		public Attribute._SvgTextRendering TextRendering
 		{
 			get	
 			{
-				return (SVGAttribute._SvgTextRendering) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrGraphics_TextRendering);	
+				return (Attribute._SvgTextRendering) GetAttributeIntValue(Attribute._SvgAttribute.attrGraphics_TextRendering);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrGraphics_TextRendering, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrGraphics_TextRendering, (int) value);
 			}
 		}
 
@@ -494,52 +494,52 @@ namespace SVGLibrary
 		/// </remarks>
 		[Category("Graphics")]
 		[Description("It control the visibility of the graphical element.")]
-		public SVGAttribute._SvgVisibility Visibility
+		public Attribute._SvgVisibility Visibility
 		{
 			get	
 			{
-				return (SVGAttribute._SvgVisibility) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrGraphics_Visiblity);	
+				return (Attribute._SvgVisibility) GetAttributeIntValue(Attribute._SvgAttribute.attrGraphics_Visiblity);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrGraphics_Visiblity, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrGraphics_Visiblity, (int) value);
 			}
 		}
 
-		protected SVGBasicShape(SVGDocument doc):base(doc)
+		protected BasicShape(Document doc):base(doc)
 		{
-			AddAttr(SVGAttribute._SvgAttribute.attrCore_XmlBase, null);
-			AddAttr(SVGAttribute._SvgAttribute.attrCore_XmlLang, null);
-			AddAttr(SVGAttribute._SvgAttribute.attrCore_XmlSpace, null);
+			AddAttr(Attribute._SvgAttribute.attrCore_XmlBase, null);
+			AddAttr(Attribute._SvgAttribute.attrCore_XmlLang, null);
+			AddAttr(Attribute._SvgAttribute.attrCore_XmlSpace, null);
 
-			AddAttr(SVGAttribute._SvgAttribute.attrStyle_Class, null);
-			AddAttr(SVGAttribute._SvgAttribute.attrStyle_Style, null);
+			AddAttr(Attribute._SvgAttribute.attrStyle_Class, null);
+			AddAttr(Attribute._SvgAttribute.attrStyle_Style, null);
 
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_Color, Color.Transparent);
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_Fill, Color.Transparent);
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_FillRule, 0);
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_Stroke, Color.Transparent);
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_StrokeWidth, null);	
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_StrokeDashArray, null);	
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_StrokeDashOffSet, null);	
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_StrokeLineCap, 0);	
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_StrokeLineJoin, 0);	
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_StrokeMiterLimit, null);	
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_ColorInterpolation, 0);	
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_ColorInterpolationFilters, 0);	
-			AddAttr(SVGAttribute._SvgAttribute.attrPaint_ColorRendering, 0);	
+			AddAttr(Attribute._SvgAttribute.attrPaint_Color, Color.Transparent);
+			AddAttr(Attribute._SvgAttribute.attrPaint_Fill, Color.Transparent);
+			AddAttr(Attribute._SvgAttribute.attrPaint_FillRule, 0);
+			AddAttr(Attribute._SvgAttribute.attrPaint_Stroke, Color.Transparent);
+			AddAttr(Attribute._SvgAttribute.attrPaint_StrokeWidth, null);	
+			AddAttr(Attribute._SvgAttribute.attrPaint_StrokeDashArray, null);	
+			AddAttr(Attribute._SvgAttribute.attrPaint_StrokeDashOffSet, null);	
+			AddAttr(Attribute._SvgAttribute.attrPaint_StrokeLineCap, 0);	
+			AddAttr(Attribute._SvgAttribute.attrPaint_StrokeLineJoin, 0);	
+			AddAttr(Attribute._SvgAttribute.attrPaint_StrokeMiterLimit, null);	
+			AddAttr(Attribute._SvgAttribute.attrPaint_ColorInterpolation, 0);	
+			AddAttr(Attribute._SvgAttribute.attrPaint_ColorInterpolationFilters, 0);	
+			AddAttr(Attribute._SvgAttribute.attrPaint_ColorRendering, 0);	
 			
-			AddAttr(SVGAttribute._SvgAttribute.attrGraphics_Display, 0);
-			AddAttr(SVGAttribute._SvgAttribute.attrGraphics_PointerEvents, 0);
-			AddAttr(SVGAttribute._SvgAttribute.attrGraphics_ImageRendering, 0);	
-			AddAttr(SVGAttribute._SvgAttribute.attrGraphics_ShapeRendering, 0);	
-			AddAttr(SVGAttribute._SvgAttribute.attrGraphics_TextRendering, 0);	
-			AddAttr(SVGAttribute._SvgAttribute.attrGraphics_Visiblity, 0);
+			AddAttr(Attribute._SvgAttribute.attrGraphics_Display, 0);
+			AddAttr(Attribute._SvgAttribute.attrGraphics_PointerEvents, 0);
+			AddAttr(Attribute._SvgAttribute.attrGraphics_ImageRendering, 0);	
+			AddAttr(Attribute._SvgAttribute.attrGraphics_ShapeRendering, 0);	
+			AddAttr(Attribute._SvgAttribute.attrGraphics_TextRendering, 0);	
+			AddAttr(Attribute._SvgAttribute.attrGraphics_Visiblity, 0);
 
-			AddAttr(SVGAttribute._SvgAttribute.attrOpacity_Opacity, null);
-			AddAttr(SVGAttribute._SvgAttribute.attrOpacity_FillOpacity, null);
-			AddAttr(SVGAttribute._SvgAttribute.attrOpacity_StrokeOpacity, null);
+			AddAttr(Attribute._SvgAttribute.attrOpacity_Opacity, null);
+			AddAttr(Attribute._SvgAttribute.attrOpacity_FillOpacity, null);
+			AddAttr(Attribute._SvgAttribute.attrOpacity_StrokeOpacity, null);
 			
 		}
 	}

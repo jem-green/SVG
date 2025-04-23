@@ -16,7 +16,7 @@ namespace SVGLibrary
 	/// <summary>
 	/// It represents the svg SVG element that is the root of the document.
 	/// </summary>
-	public class SVGRoot : SVGElement
+	public class Root : Element
 	{
 		/// <summary>
 		/// Standard XML namespace.
@@ -27,12 +27,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSvg_XmlNs);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSvg_XmlNs);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSvg_XmlNs, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSvg_XmlNs, value);
 			}
 		}
 
@@ -45,12 +45,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSvg_Version);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSvg_Version);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSvg_Version, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSvg_Version, value);
 			}
 		}
 
@@ -63,12 +63,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Width);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Width);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Width, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Width, value);
 			}
 		}
 
@@ -81,25 +81,25 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Height);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Height);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Height, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Height, value);
 			}
 		}
 
-		internal SVGRoot(SVGDocument doc):base(doc)
+		internal Root(Document doc):base(doc)
 		{
 			m_sElementName = "svg";
 			m_ElementType = SvgElementType.typeSvg;
 
-			AddAttr(SVGAttribute._SvgAttribute.attrSvg_XmlNs, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSvg_Version, "");
+			AddAttr(Attribute._SvgAttribute.attrSvg_XmlNs, "");
+			AddAttr(Attribute._SvgAttribute.attrSvg_Version, "");
 
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Width, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Height, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Width, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Height, "");
 		}
 	}
 }

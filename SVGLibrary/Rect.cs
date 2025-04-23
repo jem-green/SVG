@@ -17,7 +17,7 @@ namespace SVGLibrary
 	/// <summary>
 	/// It represents the rect SVG element.
 	/// </summary>
-	public class SVGRect : SVGBasicShape
+	public class Rect : BasicShape
 	{
 		/// <summary>
 		/// X-axis coordinate of the side of the element which has the smaller x-axis coordinate value in the current user coordinate system. If the attribute is not specified, the effect is as if a value of 0 were specified.
@@ -28,12 +28,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_X);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_X);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_X, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_X, value);
 			}
 		}
 
@@ -46,12 +46,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Y);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Y);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Y, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Y, value);
 			}
 		}
 
@@ -64,12 +64,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Width);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Width);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Width, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Width, value);
 			}
 		}
 
@@ -82,12 +82,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Height);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Height);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Height, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Height, value);
 			}
 		}
 
@@ -100,12 +100,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_RX);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_RX);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_RX, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_RX, value);
 			}
 		}
 
@@ -118,12 +118,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_RY);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_RY);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_RY, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_RY, value);
 			}
 		}
 
@@ -131,7 +131,7 @@ namespace SVGLibrary
 		/// It constructs a rect element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public SVGRect(SVGDocument doc):base(doc)
+		public Rect(Document doc):base(doc)
 		{
 			Init();
 		}
@@ -147,7 +147,7 @@ namespace SVGLibrary
 		/// <param name="sStrokeWidth"></param>
 		/// <param name="colFill"></param>
 		/// <param name="colStroke"></param>
-		public SVGRect(SVGDocument doc, 
+		public Rect(Document doc, 
 			           string sX, 
 			           string sY, 
 			           string sWidth, 
@@ -172,12 +172,12 @@ namespace SVGLibrary
 			m_sElementName = "rect";
 			m_ElementType = SvgElementType.typeRect;
 
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_X, null);
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Y, null);
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Width, null);
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Height, null);
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_RX, null);
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_RY, null);
+			AddAttr(Attribute._SvgAttribute.attrSpecific_X, null);
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Y, null);
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Width, null);
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Height, null);
+			AddAttr(Attribute._SvgAttribute.attrSpecific_RX, null);
+			AddAttr(Attribute._SvgAttribute.attrSpecific_RY, null);
 		}
 	}
 }

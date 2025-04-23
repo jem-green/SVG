@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using ShapeLibrary;
 using SVGLibrary;
-using static SVGLibrary.Path;
+using static SVGLibrary.PathSegment;
 
 namespace SVGConsole
 {
@@ -12,37 +12,37 @@ namespace SVGConsole
     {
         static void Main(string[] args)
         {
-            SVGDocument svgDocument = new SVGDocument();
-            svgDocument.LoadFromFile("test.svg");
+            Document svgDocument = new Document();
+            svgDocument.Load("test.svg");
             SHPDocument shpDocument = new SHPDocument();
             foreach (DictionaryEntry kvp in svgDocument)
             {
-                SVGElement element = (SVGElement)kvp.Value;
-                if (element.GetType() == typeof(SVGLine))
+                Element element = (Element)kvp.Value;
+                if (element.GetType() == typeof(Line))
                 {
                     Debug.WriteLine("Add Line");
-                    SVGLine line = (SVGLine)element;
+                    Line line = (Line)element;
                     SHPPoint p1 = shpDocument.GetPoint(Convert.ToDouble(line.X1), Convert.ToDouble(line.Y1), 0);
                     SHPPoint p2 = shpDocument.GetPoint(Convert.ToDouble(line.X1), Convert.ToDouble(line.Y1), 0);
                     SHPLine l1 = new SHPLine(p1, p2);
                     Console.WriteLine("Add line " + l1.ToString());
                     shpDocument.AddLine(l1);
                 }
-                else if (element.GetType() == typeof(SVGPath))
+                else if (element.GetType() == typeof(Path))
                 {
                     Debug.WriteLine("Add Path");
-                    SVGLibrary.SVGPath path = (SVGPath)element;
-                    List<Segment> segments = Path.Decode(path.PathData);
+                    SVGLibrary.Path path = (Path)element;
+                    List<SVGLibrary.PathSegment.Segment> segments = SVGLibrary.PathSegment.Decode(path.PathData);
 
                     bool start = true;
-                    Path.Point point0 = new Point();
-                    Path.Point point1 = new Point();
-                    Path.Point point2 = new Point();
-                    foreach (Segment segment in segments)
+                    SVGLibrary.PathSegment.Point point0 = new Point();
+                    SVGLibrary.PathSegment.Point point1 = new Point();
+                    SVGLibrary.PathSegment.Point point2 = new Point();
+                    foreach (SVGLibrary.PathSegment.Segment segment in segments)
                     {
                         switch(segment.Type)
                         {
-                            case Path.SegmentType.MoveToAbsolute:
+                            case SVGLibrary.PathSegment.SegmentType.MoveToAbsolute:
                                 {
                                     point1 = (Point)segment.Data;
                                     if (start == true)
@@ -51,7 +51,7 @@ namespace SVGConsole
                                     }
                                     break;
                                 }
-                            case Path.SegmentType.MoveToRelative:
+                            case SVGLibrary.PathSegment.SegmentType.MoveToRelative:
                                 {
                                     Point pointTemp = (Point)segment.Data;
                                     point1.X = point1.X + pointTemp.X;
@@ -62,7 +62,7 @@ namespace SVGConsole
                                     }
                                     break;
                                 }
-                            case Path.SegmentType.LineToAbsolute:
+                            case SVGLibrary.PathSegment.SegmentType.LineToAbsolute:
                                 {
                                     point2 = (Point)segment.Data;
                                     SHPPoint p1 = shpDocument.GetPoint(point1.X, point1.Y, 0);
@@ -73,7 +73,7 @@ namespace SVGConsole
                                     point1 = point2;
                                     break;
                                 }
-                            case Path.SegmentType.LineToRelative:
+                            case SVGLibrary.PathSegment.SegmentType.LineToRelative:
                                 {
                                     Point pointTemp = (Point)segment.Data;
                                     point2.X = point2.X + pointTemp.X;
@@ -86,7 +86,7 @@ namespace SVGConsole
                                     point1 = point2;
                                     break;
                                 }
-                            case Path.SegmentType.HorizontalLineToAbsolute:
+                            case SVGLibrary.PathSegment.SegmentType.HorizontalLineToAbsolute:
                                 {
                                     Distance distanceTemp = (Distance)segment.Data;
                                     point2.X = distanceTemp.D;
@@ -98,7 +98,7 @@ namespace SVGConsole
                                     point1 = point2;
                                     break;
                                 }
-                            case Path.SegmentType.HorizontalLineToRelative:
+                            case SVGLibrary.PathSegment.SegmentType.HorizontalLineToRelative:
                                 {
                                     Distance distanceTemp = (Distance)segment.Data;
                                     point2.X = point2.X + distanceTemp.D;
@@ -110,7 +110,7 @@ namespace SVGConsole
                                     point1 = point2;
                                     break;
                                 }
-                            case Path.SegmentType.VerticalLineToAbsolute:
+                            case SVGLibrary.PathSegment.SegmentType.VerticalLineToAbsolute:
                                 {
                                     Distance distanceTemp = (Distance)segment.Data;
                                     point2.Y = distanceTemp.D;
@@ -122,7 +122,7 @@ namespace SVGConsole
                                     point1 = point2;
                                     break;
                                 }
-                            case Path.SegmentType.VerticalLineToRelative:
+                            case SVGLibrary.PathSegment.SegmentType.VerticalLineToRelative:
                                 {
                                     Distance distanceTemp = (Distance)segment.Data;
                                     point2.Y = point2.Y + distanceTemp.D;
@@ -134,8 +134,8 @@ namespace SVGConsole
                                     point1 = point2;
                                     break;
                                 }
-                            case Path.SegmentType.ClosePathAbsolute:
-                            case Path.SegmentType.ClosePathRelative:
+                            case SVGLibrary.PathSegment.SegmentType.ClosePathAbsolute:
+                            case SVGLibrary.PathSegment.SegmentType.ClosePathRelative:
                                 {
                                     SHPPoint p1 = shpDocument.GetPoint(point1.X, point1.Y, 0);
                                     SHPPoint p2 = shpDocument.GetPoint(point0.X, point0.Y, 0);
@@ -153,10 +153,10 @@ namespace SVGConsole
                     }
 
                 }
-                else if (element.GetType() == typeof(SVGRect))
+                else if (element.GetType() == typeof(Rect))
                 {
                     Debug.WriteLine("Add Rectangle");
-                    SVGRect rectangle = (SVGRect)element;
+                    Rect rectangle = (Rect)element;
                     double x = Convert.ToDouble(rectangle.X);
                     double y = Convert.ToDouble(rectangle.Y);
                     double width = Convert.ToDouble(rectangle.Width);

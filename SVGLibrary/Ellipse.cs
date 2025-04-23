@@ -16,7 +16,7 @@ namespace SVGLibrary
 	/// <summary>
 	/// It represents the ellipse SVG element.
 	/// </summary>
-	public class SVGEllipse : SVGBasicShape
+	public class Ellipse : BasicShape
 	{
 		/// <summary>
 		/// The x-axis coordinate of the center of the ellipse.
@@ -27,12 +27,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_CX);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_CX);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_CX, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_CX, value);
 			}
 		}
 
@@ -45,12 +45,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_CY);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_CY);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_CY, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_CY, value);
 			}
 		}
 
@@ -63,12 +63,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_RX);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_RX);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_RX, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_RX, value);
 			}
 		}
 
@@ -81,12 +81,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_RY);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_RY);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_RY, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_RY, value);
 			}
 		}
 
@@ -94,7 +94,7 @@ namespace SVGLibrary
 		/// It constructs an ellipse element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public SVGEllipse(SVGDocument doc):base(doc)
+		public Ellipse(Document doc):base(doc)
 		{
 			Init();
 		}
@@ -107,7 +107,7 @@ namespace SVGLibrary
 		/// <param name="sCY"></param>
 		/// <param name="sRX"></param>
 		/// <param name="sRY"></param>
-		public SVGEllipse(SVGDocument doc, string sCX, string sCY, string sRX, string sRY):base(doc)
+		public Ellipse(Document doc, string sCX, string sCY, string sRX, string sRY):base(doc)
 		{
 			Init();
 
@@ -122,10 +122,10 @@ namespace SVGLibrary
 			m_sElementName = "ellipse";
 			m_ElementType = SvgElementType.typeEllipse;
 
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_CX, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_CY, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_RX, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_RY, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_CX, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_CY, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_RX, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_RY, "");
 		}
 	}
 }

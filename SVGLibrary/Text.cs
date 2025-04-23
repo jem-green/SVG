@@ -17,7 +17,7 @@ namespace SVGLibrary
 	/// <summary>
 	/// It represents the text SVG element.
 	/// </summary>
-	public class SVGText : SVGElement
+	public class Text : Element
 	{
 		/// <summary>
 		/// Specifies a base URI other than the base URI of the document or external entity.
@@ -28,12 +28,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrCore_XmlBase);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrCore_XmlBase);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrCore_XmlBase, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrCore_XmlBase, value);
 			}
 		}
 
@@ -46,12 +46,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrCore_XmlLang);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrCore_XmlLang);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrCore_XmlLang, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrCore_XmlLang, value);
 			}
 		}
 
@@ -64,12 +64,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrCore_XmlSpace);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrCore_XmlSpace);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrCore_XmlSpace, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrCore_XmlSpace, value);
 			}
 		}
 
@@ -82,12 +82,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrStyle_Class);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrStyle_Class);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrStyle_Class, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrStyle_Class, value);
 			}
 		}
 
@@ -100,12 +100,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrStyle_Style);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrStyle_Style);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrStyle_Style, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrStyle_Style, value);
 			}
 		}
 
@@ -136,12 +136,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_X);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_X);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_X, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_X, value);
 			}
 		}
 
@@ -154,12 +154,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Y);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Y);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Y, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Y, value);
 			}
 		}
 
@@ -172,12 +172,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_DX);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_DX);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_DX, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_DX, value);
 			}
 		}
 
@@ -190,12 +190,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_DY);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_DY);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_DY, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_DY, value);
 			}
 		}
 
@@ -208,12 +208,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Rotate);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Rotate);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Rotate, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Rotate, value);
 			}
 		}
 
@@ -226,12 +226,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_TextLength);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_TextLength);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_TextLength, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_TextLength, value);
 			}
 		}
 
@@ -240,16 +240,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("(Specific)")]
 		[Description("Indicates the type of adjustments which the user agent shall make to make the rendered length of the text match the value specified on the textLength attribute.")]
-		public SVGAttribute._SvgLengthAdjust LengthAdjust
+		public Attribute._SvgLengthAdjust LengthAdjust
 		{
 			get	
 			{
-				return (SVGAttribute._SvgLengthAdjust) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrSpecific_LengthAdjust);	
+				return (Attribute._SvgLengthAdjust) GetAttributeIntValue(Attribute._SvgAttribute.attrSpecific_LengthAdjust);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_LengthAdjust, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_LengthAdjust, (int) value);
 			}
 		}
 
@@ -262,12 +262,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrFont_Family);
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrFont_Family);
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrFont_Family, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrFont_Family, value);
 			}
 		}
 
@@ -280,12 +280,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrFont_Size);
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrFont_Size);
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrFont_Size, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrFont_Size, value);
 			}
 		}
 
@@ -298,12 +298,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrFont_SizeAdjust);
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrFont_SizeAdjust);
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrFont_SizeAdjust, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrFont_SizeAdjust, value);
 			}
 		}
 
@@ -312,16 +312,16 @@ namespace SVGLibrary
 		/// </summary>
 		[Category("Font")]
 		[Description("This property indicates the desired amount of condensing or expansion in the glyphs used to render the text.")]
-		public SVGAttribute._SvgFontStretch Stretch
+		public Attribute._SvgFontStretch Stretch
 		{
 			get	
 			{
-				return (SVGAttribute._SvgFontStretch) GetAttributeIntValue(SVGAttribute._SvgAttribute.attrFont_Stretch);
+				return (Attribute._SvgFontStretch) GetAttributeIntValue(Attribute._SvgAttribute.attrFont_Stretch);
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrFont_Stretch, (int) value);
+				SetAttributeValue(Attribute._SvgAttribute.attrFont_Stretch, (int) value);
 			}
 		}
 
@@ -329,34 +329,34 @@ namespace SVGLibrary
 		/// It constructs a text element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public SVGText(SVGDocument doc):base(doc)
+		public Text(Document doc):base(doc)
 		{
 			m_sElementName = "text";
 			m_bHasValue = true;
 			m_ElementType = SvgElementType.typeText;
 
-			AddAttr(SVGAttribute._SvgAttribute.attrCore_XmlBase, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrCore_XmlLang, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrCore_XmlSpace, "");
+			AddAttr(Attribute._SvgAttribute.attrCore_XmlBase, "");
+			AddAttr(Attribute._SvgAttribute.attrCore_XmlLang, "");
+			AddAttr(Attribute._SvgAttribute.attrCore_XmlSpace, "");
 
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_X, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Y, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_DX, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_DY, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Rotate, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_TextLength, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_LengthAdjust, 0);
+			AddAttr(Attribute._SvgAttribute.attrSpecific_X, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Y, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_DX, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_DY, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Rotate, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_TextLength, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_LengthAdjust, 0);
 
-			AddAttr(SVGAttribute._SvgAttribute.attrStyle_Class, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrStyle_Style, "");
+			AddAttr(Attribute._SvgAttribute.attrStyle_Class, "");
+			AddAttr(Attribute._SvgAttribute.attrStyle_Style, "");
 
-			AddAttr(SVGAttribute._SvgAttribute.attrFont_Family, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrFont_Size, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrFont_SizeAdjust, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrFont_Stretch, 0);
-			AddAttr(SVGAttribute._SvgAttribute.attrFont_Style, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrFont_Variant, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrFont_Weight, "");
+			AddAttr(Attribute._SvgAttribute.attrFont_Family, "");
+			AddAttr(Attribute._SvgAttribute.attrFont_Size, "");
+			AddAttr(Attribute._SvgAttribute.attrFont_SizeAdjust, "");
+			AddAttr(Attribute._SvgAttribute.attrFont_Stretch, 0);
+			AddAttr(Attribute._SvgAttribute.attrFont_Style, "");
+			AddAttr(Attribute._SvgAttribute.attrFont_Variant, "");
+			AddAttr(Attribute._SvgAttribute.attrFont_Weight, "");
 		}
 	}
 }

@@ -16,7 +16,7 @@ namespace SVGLibrary
 	/// <summary>
 	/// It represents the circle SVG element.
 	/// </summary>
-	public class SVGCircle : SVGBasicShape
+	public class Circle : BasicShape
 	{
 		/// <summary>
 		/// The x-axis coordinate of the center of the circle.
@@ -27,12 +27,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_CX);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_CX);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_CX, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_CX, value);
 			}
 		}
 
@@ -45,12 +45,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_CY);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_CY);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_CY, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_CY, value);
 			}
 		}
 
@@ -63,12 +63,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_R);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_R);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_R, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_R, value);
 			}
 		}
 
@@ -76,7 +76,7 @@ namespace SVGLibrary
 		/// It constructs a circle element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public SVGCircle(SVGDocument doc):base(doc)
+		public Circle(Document doc):base(doc)
 		{
 			Init();
 		}
@@ -88,7 +88,7 @@ namespace SVGLibrary
 		/// <param name="sCX"></param>
 		/// <param name="sCY"></param>
 		/// <param name="sRadius"></param>
-		public SVGCircle(SVGDocument doc, string sCX, string sCY, string sRadius):base(doc)
+		public Circle(Document doc, string sCX, string sCY, string sRadius):base(doc)
 		{
 			Init();
 
@@ -102,9 +102,9 @@ namespace SVGLibrary
 			m_sElementName = "circle";
 			m_ElementType = SvgElementType.typeCircle;
 
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_CX, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_CY, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_R, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_CX, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_CY, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_R, "");
 		}
 	}
 }

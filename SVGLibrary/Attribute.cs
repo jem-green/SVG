@@ -7,7 +7,7 @@ namespace SVGLibrary
     /// <summary>
     /// It represents a generic SVG attribute.
     /// </summary>
-    public class SVGAttribute
+    public class Attribute
 	{
         #region Field
         /// <summary>
@@ -396,7 +396,7 @@ namespace SVGLibrary
 		/// Constructor.
 		/// </summary>
 		/// <param name="type">Attribute type.</param>
-		public SVGAttribute(_SvgAttribute type)
+		public Attribute(_SvgAttribute type)
 		{
 			m_AttrType = type;
 			m_objValue = null;

@@ -11,12 +11,12 @@ namespace SVGLibrary
 	/// <summary>
 	/// It represents the SVG document.
 	/// </summary>
-	public class SVGDocument : IEnumerable
+	public class Document : IEnumerable
 	{
         #region Fields
 
         // root of the document 
-        private SVGRoot _root;
+        private Root _root;
 		
 		// document elements, hashtable key is the InternalId 
 		private Hashtable _elements;
@@ -35,7 +35,7 @@ namespace SVGLibrary
         /// <summary>
         /// Constructor.
         /// </summary>
-        public SVGDocument()
+        public Document()
 		{
 			_root = null;
 			_nNextId = 1;
@@ -48,12 +48,12 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="Filename">The complete path of a valid SVG file.</param>
 		/// </summary>
-		public SVGDocument(string filename)
+		public Document(string filename)
 		{
 			_root = null;
 			_nNextId = 1;
 			_elements = new Hashtable();
-			LoadFromFile(filename);
+			Load(filename);
 		}
 
 #endregion
@@ -66,7 +66,7 @@ namespace SVGLibrary
         /// <returns>
         /// The root element of the SVG document.
         /// </returns>
-        public SVGRoot CreateNewDocument()
+        public Root New()
 		{
 			if ( _root != null )
 			{
@@ -75,7 +75,7 @@ namespace SVGLibrary
 				_elements.Clear();
 			}
 
-			_root = new SVGRoot(this);
+			_root = new Root(this);
 			_root.setInternalId(_nNextId++);
 			
 			_elements.Add(_root.getInternalId(), _root);
@@ -83,8 +83,8 @@ namespace SVGLibrary
 			_XmlDeclaration = "<?xml version=\"1.0\"?>";
 			_XmlDocType = "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">";
 
-			_root.SetAttributeValue(SVGAttribute._SvgAttribute.attrSvg_XmlNs, "http://www.w3.org/2000/svg");
-			_root.SetAttributeValue(SVGAttribute._SvgAttribute.attrSvg_Version, "1.1");
+			_root.SetAttributeValue(Attribute._SvgAttribute.attrSvg_XmlNs, "http://www.w3.org/2000/svg");
+			_root.SetAttributeValue(Attribute._SvgAttribute.attrSvg_Version, "1.1");
 
 			return _root;
 		}
@@ -98,7 +98,7 @@ namespace SVGLibrary
 		/// true if the file is loaded successfully and it is a valid SVG document, false if the file cannot be open or if it is not
 		/// a valid SVG document.
 		/// </returns>
-		public bool LoadFromFile(string sFilename)
+		public bool Load(string sFilename)
 		{
 			Debug.WriteLine("SvgDoc", "LoadFromFile");
 			Debug.WriteLine("sFilename", sFilename);
@@ -122,7 +122,7 @@ namespace SVGLibrary
 				reader.Namespaces = false;
 
 				string tmp;
-				SVGElement eleParent = null;	
+				Element eleParent = null;	
 
 				try 
 				{
@@ -139,7 +139,7 @@ namespace SVGLibrary
 								}
 							case XmlNodeType.Element:
 								{
-									SVGElement ele = AddElement(eleParent, reader.Name);
+									Element ele = AddElement(eleParent, reader.Name);
 
 									if (ele == null)
 									{
@@ -267,7 +267,7 @@ namespace SVGLibrary
 		/// <returns>
 		/// true if the file is saved successfully, false otherwise
 		/// </returns>
-		public bool SaveToFile(string sFilename)
+		public bool Save(string sFilename)
 		{
 			Debug.WriteLine("SvgDoc", "SaveToFile");
 			Debug.WriteLine("sFilename", sFilename);
@@ -352,14 +352,14 @@ namespace SVGLibrary
 		/// <returns>
 		/// The SvgElement with the given internal Id. Null if no element can be found.
 		/// </returns>
-		public SVGElement GetSvgElement(int nInternalId)
+		public Element GetElement(int nInternalId)
 		{
 			if (!_elements.ContainsKey(nInternalId))
 			{
 				return null;
 			}
 
-			return (SVGElement) _elements[nInternalId];
+			return (Element) _elements[nInternalId];
 		}
 
 		/// <summary>
@@ -368,7 +368,7 @@ namespace SVGLibrary
 		/// <returns>
 		/// Root element.
 		/// </returns>
-		public SVGRoot GetSvgRoot()
+		public Root GetRoot()
 		{
 			return _root;
 		}
@@ -380,9 +380,9 @@ namespace SVGLibrary
 		/// <returns>
 		/// The SvgElement with the given XML Id. Null if no element can be found.
 		/// </returns>
-		public SVGElement GetSvgElement(string sId)
+		public Element GetElement(string sId)
 		{
-			SVGElement eleToReturn = null;
+			Element eleToReturn = null;
 
 			IDictionaryEnumerator e = _elements.GetEnumerator();
 			
@@ -391,8 +391,8 @@ namespace SVGLibrary
 			{
 				string sValue = "";
 
-				SVGElement ele = (SVGElement) e.Value;
-				sValue = ele.GetAttributeStringValue(SVGAttribute._SvgAttribute.attrCore_Id);
+				Element ele = (Element) e.Value;
+				sValue = ele.GetAttributeStringValue(Attribute._SvgAttribute.attrCore_Id);
 				if ( sValue == sId )
 				{
 					eleToReturn = ele;
@@ -410,7 +410,7 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <param name="eleToAdd">Element to be added.</param>
-		public void AddElement(SVGElement parent, SVGElement eleToAdd)
+		public void AddElement(Element parent, Element eleToAdd)
 		{
 			Debug.WriteLine("SvgDoc", "AddElement");
 
@@ -420,7 +420,7 @@ namespace SVGLibrary
 				return;
 			}
 
-			SVGElement parentToAdd = _root;
+			Element parentToAdd = _root;
 			if ( parent != null )
 			{
 				parentToAdd = parent;
@@ -438,7 +438,7 @@ namespace SVGLibrary
 			else
 			{
 				// add the element as the last sibling
-				SVGElement last = GetLastSibling(parentToAdd.getChild());
+				Element last = GetLastSibling(parentToAdd.getChild());
 
 				if ( last != null )
 				{
@@ -458,13 +458,13 @@ namespace SVGLibrary
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <param name="sName">SVG element name.</param>
 		/// <returns>The new created element.</returns>
-		public SVGElement AddElement(SVGElement parent, string sName)
+		public Element AddElement(Element parent, string sName)
 		{
-			SVGElement eleToReturn = null;
+			Element eleToReturn = null;
 
 			if ( sName == "svg" )
 			{
-				_root = new SVGRoot(this);
+				_root = new Root(this);
 				_root.setInternalId(_nNextId++);
 			
 				_elements.Add(_root.getInternalId(), _root);
@@ -528,10 +528,10 @@ namespace SVGLibrary
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <param name="eleToClone">Element to be cloned</param>
 		/// <returns></returns>
-		public SVGElement CloneElement(SVGElement parent, SVGElement eleToClone)
+		public Element CloneElement(Element parent, Element eleToClone)
 		{
 			// calculate unique id
-			string sOldId = eleToClone.GetAttributeStringValue(SVGAttribute._SvgAttribute.attrCore_Id);
+			string sOldId = eleToClone.GetAttributeStringValue(Attribute._SvgAttribute.attrCore_Id);
 			string sNewId = sOldId;
 			
 			if ( sOldId != "" )
@@ -539,7 +539,7 @@ namespace SVGLibrary
 				int i = 1;
 				
 				// check if it is unique
-				while ( GetSvgElement(sNewId) != null )
+				while ( GetElement(sNewId) != null )
 				{
 					sNewId = sOldId + "_" + i.ToString();
 					i++;
@@ -547,12 +547,12 @@ namespace SVGLibrary
 			}
 
 			// clone operation
-			SVGElement eleNew = AddElement(parent, eleToClone.getElementName());
+			Element eleNew = AddElement(parent, eleToClone.getElementName());
 			eleNew.CloneAttributeList(eleToClone);
 
 			if ( sNewId != "" )
 			{
-				eleNew.SetAttributeValue(SVGAttribute._SvgAttribute.attrCore_Id, sNewId);
+				eleNew.SetAttributeValue(Attribute._SvgAttribute.attrCore_Id, sNewId);
 			}
 
 			if ( eleToClone.getChild() != null )
@@ -580,9 +580,9 @@ namespace SVGLibrary
 		/// The unsupported element is used when during the parsing of a file an unknown
 		/// element tag is found.
 		/// </remarks>
-		public SVGUnsupported AddUnsupported(SVGElement parent, string sName)
+		public Unsupported AddUnsupported(Element parent, string sName)
 		{
-			SVGUnsupported uns = new SVGUnsupported(this, sName);
+			Unsupported uns = new Unsupported(this, sName);
 			
 			AddElement(parent, uns);
 			
@@ -594,9 +594,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public SVGDesc AddDesc(SVGElement parent)
+		public Desc AddDesc(Element parent)
 		{
-			SVGDesc desc = new SVGDesc(this);
+			Desc desc = new Desc(this);
 			
 			AddElement(parent, desc);
 			
@@ -608,9 +608,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public SVGGroup AddGroup(SVGElement parent)
+		public Group AddGroup(Element parent)
 		{
-			SVGGroup grp = new SVGGroup(this);
+			Group grp = new Group(this);
 			
 			AddElement(parent, grp);
 			
@@ -622,9 +622,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public SVGText AddText(SVGElement parent)
+		public Text AddText(Element parent)
 		{
-			SVGText txt = new SVGText(this);
+			Text txt = new Text(this);
 			
 			AddElement(parent, txt);
 			
@@ -636,9 +636,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public SVGRect AddRect(SVGElement parent)
+		public Rect AddRect(Element parent)
 		{
-			SVGRect rect = new SVGRect(this);
+			Rect rect = new Rect(this);
 			
 			AddElement(parent, rect);
 			
@@ -650,9 +650,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public SVGCircle AddCircle(SVGElement parent)
+		public Circle AddCircle(Element parent)
 		{
-			SVGCircle circle = new SVGCircle(this);
+			Circle circle = new Circle(this);
 			
 			AddElement(parent, circle);
 			
@@ -664,9 +664,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public SVGEllipse AddEllipse(SVGElement parent)
+		public Ellipse AddEllipse(Element parent)
 		{
-			SVGEllipse ellipse = new SVGEllipse(this);
+			Ellipse ellipse = new Ellipse(this);
 			
 			AddElement(parent, ellipse);
 			
@@ -678,9 +678,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public SVGLine AddLine(SVGElement parent)
+		public Line AddLine(Element parent)
 		{
-			SVGLine line = new SVGLine(this);
+			Line line = new Line(this);
 			
 			AddElement(parent, line);
 			
@@ -692,9 +692,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public SVGPath AddPath(SVGElement parent)
+		public Path AddPath(Element parent)
 		{
-			SVGPath path = new SVGPath(this);
+			Path path = new Path(this);
 			
 			AddElement(parent, path);
 			
@@ -706,9 +706,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public SVGPolygon AddPolygon(SVGElement parent)
+		public Polygon AddPolygon(Element parent)
 		{
-			SVGPolygon poly = new SVGPolygon(this);
+			Polygon poly = new Polygon(this);
 			
 			AddElement(parent, poly);
 			
@@ -720,9 +720,9 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="parent">Parent element. If null the element is added under the root.</param>
 		/// <returns>New element created.</returns>
-		public SVGImage AddImage(SVGElement parent)
+		public Image AddImage(Element parent)
 		{
-			SVGImage img = new SVGImage(this);
+			Image img = new Image(this);
 			
 			AddElement(parent, img);
 			
@@ -736,7 +736,7 @@ namespace SVGLibrary
 		/// <returns>
 		/// true if the element has been successfully deleted; false otherwise.
 		/// </returns>
-		public bool DeleteElement(SVGElement ele)
+		public bool DeleteElement(Element ele)
 		{
 			return DeleteElement(ele, true);
 		}
@@ -750,7 +750,7 @@ namespace SVGLibrary
 		/// </returns>
 		public bool DeleteElement(int nInternalId)
 		{
-			return DeleteElement(GetSvgElement(nInternalId), true);
+			return DeleteElement(GetElement(nInternalId), true);
 		}
 
 		/// <summary>
@@ -762,7 +762,7 @@ namespace SVGLibrary
 		/// </returns>
 		public bool DeleteElement(string sId)
 		{
-			return DeleteElement(GetSvgElement(sId), true);
+			return DeleteElement(GetElement(sId), true);
 		}
 
 		/// <summary>
@@ -772,12 +772,12 @@ namespace SVGLibrary
 		/// <returns>
 		/// true if the operation succeeded.
 		/// </returns>
-		public bool ElementPositionUp(SVGElement ele)
+		public bool ElementPositionUp(Element ele)
 		{
 			Debug.WriteLine("SvgDoc", "ElementPositionUp");
 			Debug.WriteLine("Element to move " + ele.ElementInfo());
 
-			SVGElement parent = ele.getParent();
+			Element parent = ele.getParent();
 			if ( parent == null )
 			{
 				Debug.WriteLine("Root node cannot be moved");
@@ -794,9 +794,9 @@ namespace SVGLibrary
 				return false;
 			}
 
-			SVGElement nxt = ele.getNext();
-			SVGElement prv = ele.getPrevious();
-			SVGElement prv2 = null;
+			Element nxt = ele.getNext();
+			Element prv = ele.getPrevious();
+			Element prv2 = null;
 
 			ele.setNext(null);
 			ele.setPrevious(null);
@@ -848,12 +848,12 @@ namespace SVGLibrary
 		/// <returns>
 		/// true if the operation succeeded.
 		/// </returns>
-		public bool ElementLevelUp(SVGElement ele)
+		public bool ElementLevelUp(Element ele)
 		{
 			Debug.WriteLine("SvgDoc", "ElementLevelUp");
 			Debug.WriteLine("Element to move " + ele.ElementInfo());
 
-			SVGElement parent = ele.getParent();
+			Element parent = ele.getParent();
 			if ( parent == null )
 			{
 				Debug.WriteLine("Root node cannot be moved");
@@ -870,7 +870,7 @@ namespace SVGLibrary
 				return false;
 			}
 				
-			SVGElement nxt = ele.getNext();
+			Element nxt = ele.getNext();
 				
 			// the first child of the parent became the next
 			parent.setChild(nxt);
@@ -881,7 +881,7 @@ namespace SVGLibrary
 			}
 
 			// get the last sibling of the parent
-			SVGElement last = GetLastSibling(parent);
+			Element last = GetLastSibling(parent);
 			if ( last != null )
 			{
 				last.setNext(ele);
@@ -901,12 +901,12 @@ namespace SVGLibrary
 		/// <returns>
 		/// true if the operation succeeded.
 		/// </returns>
-		public bool ElementPositionDown(SVGElement ele)
+		public bool ElementPositionDown(Element ele)
 		{
 			Debug.WriteLine("SvgDoc", "ElementPositionDown");
 			Debug.WriteLine("Element to move " + ele.ElementInfo());
 
-			SVGElement parent = ele.getParent();
+			Element parent = ele.getParent();
 			if ( parent == null )
 			{
 				Debug.WriteLine("Root node cannot be moved");
@@ -923,9 +923,9 @@ namespace SVGLibrary
 				return false;
 			}
 			
-			SVGElement nxt = ele.getNext();
-			SVGElement nxt2 = null;
-			SVGElement prv = ele.getPrevious();
+			Element nxt = ele.getNext();
+			Element nxt2 = null;
+			Element prv = ele.getPrevious();
 			
 			// fix Next
 			if ( nxt != null )
@@ -967,9 +967,9 @@ namespace SVGLibrary
 		//}
 
 #endregion
-        #region Private
+#region Private
 
-        private bool DeleteElement(SVGElement ele, bool bDeleteFromParent)
+        private bool DeleteElement(Element ele, bool bDeleteFromParent)
 		{
 			Debug.WriteLine("SvgDoc", "DeleteElement");
 
@@ -980,7 +980,7 @@ namespace SVGLibrary
 				return false;
 			}
 
-			SVGElement parent = ele.getParent();
+			Element parent = ele.getParent();
 			if ( parent == null )
 			{
 				// root node cannot be delete!
@@ -1016,7 +1016,7 @@ namespace SVGLibrary
 			}
 
 			// delete its children
-			SVGElement child = ele.getChild();
+			Element child = ele.getChild();
 
 			while ( child != null )
 			{
@@ -1033,8 +1033,8 @@ namespace SVGLibrary
 			return true;
 		}
 
-		// returns true if the given elemebt is the first child 
-		private bool IsFirstChild(SVGElement ele)
+		// returns true if the given element is the first child 
+		private bool IsFirstChild(Element ele)
 		{
 			if ( ele.getParent() == null )
 			{
@@ -1049,9 +1049,9 @@ namespace SVGLibrary
 			return (ele.getInternalId() == ele.getParent().getChild().getInternalId());
 		}
 
-		private bool IsLastSibling(SVGElement ele)
+		private bool IsLastSibling(Element ele)
 		{
-			SVGElement last = GetLastSibling(ele);
+			Element last = GetLastSibling(ele);
 
 			if ( last == null )
 			{
@@ -1061,14 +1061,14 @@ namespace SVGLibrary
 			return (ele.getInternalId() == last.getInternalId());
 		}
 
-		private SVGElement GetLastSibling(SVGElement ele)
+		private Element GetLastSibling(Element ele)
 		{
 			if ( ele == null )
 			{
 				return null;
 			}
 
-			SVGElement last = ele;
+			Element last = ele;
 			while (last.getNext() != null)
 			{
 				last = last.getNext();

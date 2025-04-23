@@ -18,7 +18,7 @@ namespace SVGLibrary
 	/// Each container element or graphics element in an SVG drawing can supply 
 	/// a 'desc' and/or a 'title' description string where the description is text-only.
 	/// </summary>
-	public class SVGDesc : SVGElement
+	public class Desc : Element
 	{
 		/// <summary>
 		/// The value of the element.
@@ -42,7 +42,7 @@ namespace SVGLibrary
 		/// It constructs a desc element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public SVGDesc(SVGDocument doc):base(doc)
+		public Desc(Document doc):base(doc)
 		{
 			Init();
 		}
@@ -52,7 +52,7 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
 		/// <param name="sValue"></param>
-		public SVGDesc(SVGDocument doc, string sValue):base(doc)
+		public Desc(Document doc, string sValue):base(doc)
 		{
 			Init();
 

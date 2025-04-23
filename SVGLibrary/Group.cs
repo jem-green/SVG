@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------
-// Name:     SvgUnsupported
+// Name:     SvgGroup
 //
 // Author:   Maurizio Bigoloni <big71@fastwebnet.it>
 //           See the ReleaseNote.txt file for copyright and license information.
@@ -13,15 +13,18 @@ using System;
 namespace SVGLibrary
 {
 	/// <summary>
-	/// This class does not represent any SVG element. It is used when parsing an SVG file an
-	/// unknown element is found.
+	/// It represents the group SVG element.
 	/// </summary>
-	public class SVGUnsupported : SVGElement
+	public class Group : Element
 	{
-		public SVGUnsupported(SVGDocument doc, string sName):base(doc)
+		/// <summary>
+		/// It constructs a group element with no attribute.
+		/// </summary>
+		/// <param name="doc">SVG document.</param>
+		public Group(Document doc):base(doc)
 		{
-			m_sElementName = sName + ":unsupported";
-			m_ElementType = SvgElementType.typeUnsupported;
+			m_sElementName = "g";
+			m_ElementType = SvgElementType.typeGroup;
 		}
 	}
 }

@@ -17,7 +17,7 @@ namespace SVGLibrary
 	/// It represents the polygon SVG element.
 	/// The 'polygon' element defines a closed shape consisting of a set of connected straight line segments.
 	/// </summary>
-	public class SVGPolygon : SVGBasicShape
+	public class Polygon : BasicShape
 	{
 		/// <summary>
 		/// The points that make up the polygon. All coordinate values are in the user coordinate system.
@@ -28,12 +28,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Points);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Points);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Points, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Points, value);
 			}
 		}
 
@@ -41,7 +41,7 @@ namespace SVGLibrary
 		/// It constructs a polygon element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public SVGPolygon(SVGDocument doc):base(doc)
+		public Polygon(Document doc):base(doc)
 		{
 			Init();
 		}
@@ -51,7 +51,7 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
 		/// <param name="sPoints"></param>
-		public SVGPolygon(SVGDocument doc, string sPoints):base(doc)
+		public Polygon(Document doc, string sPoints):base(doc)
 		{
 			Init();
 
@@ -63,7 +63,7 @@ namespace SVGLibrary
 			m_sElementName = "polygon";
 			m_ElementType = SvgElementType.typePolygon;
 
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Points, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Points, "");
 		}
 	}
 }

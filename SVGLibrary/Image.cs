@@ -6,7 +6,7 @@ namespace SVGLibrary
 	/// <summary>
 	/// It represents the image SVG element.
 	/// </summary>
-	public class SVGImage : SVGElement
+	public class Image : Element
 	{
 		/// <summary>
 		/// The x-axis coordinate of the side of the element which has the smaller x-axis coordinate value in the current user coordinate system. If the attribute is not specified, the effect is as if a value of 0 were specified.
@@ -17,12 +17,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_X);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_X);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_X, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_X, value);
 			}
 		}
 
@@ -35,12 +35,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Y);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Y);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Y, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Y, value);
 			}
 		}
 
@@ -53,12 +53,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Width);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Width);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Width, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Width, value);
 			}
 		}
 
@@ -71,12 +71,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrSpecific_Height);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrSpecific_Height);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrSpecific_Height, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrSpecific_Height, value);
 			}
 		}
 
@@ -89,12 +89,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrStyle_Class);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrStyle_Class);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrStyle_Class, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrStyle_Class, value);
 			}
 		}
 
@@ -107,12 +107,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrStyle_Style);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrStyle_Style);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrStyle_Style, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrStyle_Style, value);
 			}
 		}
 
@@ -125,12 +125,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrXLink_HRef);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrXLink_HRef);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrXLink_HRef, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrXLink_HRef, value);
 			}
 		}
 
@@ -138,7 +138,7 @@ namespace SVGLibrary
 		/// It constructs an image element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public SVGImage(SVGDocument doc):base(doc)
+		public Image(Document doc):base(doc)
 		{
 			Init();
 		}
@@ -153,7 +153,7 @@ namespace SVGLibrary
 		/// <param name="sHeight"></param>
 		/// <param name="sHRef"></param>
 		/// <param name="doc"></param>
-		public SVGImage(SVGDocument doc, 
+		public Image(Document doc, 
 						string sX, 
 						string sY, 
 						string sWidth, 
@@ -174,15 +174,15 @@ namespace SVGLibrary
 			m_sElementName = "image";
 			m_ElementType = SvgElementType.typeImage;
 
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_X, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Y, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Width, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrSpecific_Height, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_X, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Y, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Width, "");
+			AddAttr(Attribute._SvgAttribute.attrSpecific_Height, "");
 			
-			AddAttr(SVGAttribute._SvgAttribute.attrXLink_HRef, "");
+			AddAttr(Attribute._SvgAttribute.attrXLink_HRef, "");
 
-			AddAttr(SVGAttribute._SvgAttribute.attrStyle_Class, "");
-			AddAttr(SVGAttribute._SvgAttribute.attrStyle_Style, "");
+			AddAttr(Attribute._SvgAttribute.attrStyle_Class, "");
+			AddAttr(Attribute._SvgAttribute.attrStyle_Style, "");
 		}
 	}
 }

@@ -20,7 +20,7 @@ namespace SVGLibrary
 	/// This is the base class of any Svg element.
 	/// </summary>
 	[DefaultProperty("Id")]
-	public class SVGElement
+	public class Element
 	{
 		/// <summary>
 		/// List all SVG element types. For each element a specific class is defined in the library.
@@ -53,12 +53,12 @@ namespace SVGLibrary
 		{
 			get	
 			{
-				return GetAttributeStringValue(SVGAttribute._SvgAttribute.attrCore_Id);	
+				return GetAttributeStringValue(Attribute._SvgAttribute.attrCore_Id);	
 			}
 
 			set	
 			{
-				SetAttributeValue(SVGAttribute._SvgAttribute.attrCore_Id, value);
+				SetAttributeValue(Attribute._SvgAttribute.attrCore_Id, value);
 			}
 		}
 
@@ -69,8 +69,8 @@ namespace SVGLibrary
 		{
 			int IComparer.Compare( Object x, Object y )  
 			{
-				SVGAttribute ax = (SVGAttribute) x;
-				SVGAttribute ay = (SVGAttribute) y;
+				Attribute ax = (Attribute) x;
+				Attribute ay = (Attribute) y;
 
 				if ( ax.AttributeGroup == ay.AttributeGroup )
 				{
@@ -98,13 +98,13 @@ namespace SVGLibrary
         #region Fields
 
         // navigation
-        protected SVGElement m_Parent;
-		protected SVGElement m_Child;
-		protected SVGElement m_Next; 
-		protected SVGElement m_Previous;
+        protected Element m_Parent;
+		protected Element m_Child;
+		protected Element m_Next; 
+		protected Element m_Previous;
 
 		// document
-		protected SVGDocument m_doc;
+		protected Document m_doc;
 		
 		// internal stuff
 		protected int m_nInternalId;
@@ -125,7 +125,7 @@ namespace SVGLibrary
 		/// It returns the parent element.
 		/// </summary>
 		/// <returns></returns>
-		public SVGElement getParent()
+		public Element getParent()
 		{
 			return m_Parent;
 		}
@@ -134,7 +134,7 @@ namespace SVGLibrary
 		/// It sets the parent element.
 		/// </summary>
 		/// <param name="ele">New parent element</param>
-		public void setParent(SVGElement ele)
+		public void setParent(Element ele)
 		{
 			m_Parent = ele;
 		}
@@ -143,7 +143,7 @@ namespace SVGLibrary
 		/// It gest the first child element.
 		/// </summary>
 		/// <returns>First child element.</returns>
-		public SVGElement getChild()
+		public Element getChild()
 		{
 			return m_Child;
 		}
@@ -152,7 +152,7 @@ namespace SVGLibrary
 		/// It sets the first child element.
 		/// </summary>
 		/// <param name="ele">New child.</param>
-		public void setChild(SVGElement ele)
+		public void setChild(Element ele)
 		{
 			m_Child = ele;
 		}
@@ -161,7 +161,7 @@ namespace SVGLibrary
 		/// It gets the next sibling element.
 		/// </summary>
 		/// <returns>Next element.</returns>
-		public SVGElement getNext()
+		public Element getNext()
 		{
 			return m_Next;
 		}
@@ -170,7 +170,7 @@ namespace SVGLibrary
 		/// It sets the next sibling element.
 		/// </summary>
 		/// <param name="ele">New next element.</param>
-		public void setNext(SVGElement ele)
+		public void setNext(Element ele)
 		{
 			m_Next = ele;
 		}
@@ -179,7 +179,7 @@ namespace SVGLibrary
 		/// It gets the previous sibling element.
 		/// </summary>
 		/// <returns>Previous element.</returns>
-		public SVGElement getPrevious()
+		public Element getPrevious()
 		{
 			return m_Previous;
 		}
@@ -188,7 +188,7 @@ namespace SVGLibrary
 		/// It sets the previous element.
 		/// </summary>
 		/// <param name="ele">New previous element.</param>
-		public void setPrevious(SVGElement ele)
+		public void setPrevious(Element ele)
 		{
 			m_Previous = ele;
 		}
@@ -279,7 +279,7 @@ namespace SVGLibrary
 
 			sXML += CloseXMLTag();
 
-			SVGElement ele = m_Next;
+			Element ele = m_Next;
 			if (ele != null)
 			{
 				sXML += ele.GetXML();
@@ -321,7 +321,7 @@ namespace SVGLibrary
 
 			for (int i = 0; i < m_attributes.Count; i++ )
 			{
-				SVGAttribute attr = (SVGAttribute) m_attributes[i];
+				Attribute attr = (Attribute) m_attributes[i];
 
 				aType.Add(attr.AttributeType);
 				aName.Add(attr.Name);
@@ -334,7 +334,7 @@ namespace SVGLibrary
 		/// current element.
 		/// </summary>
 		/// <param name="eleToClone">Element that has to be cloned.</param>
-		public void CloneAttributeList(SVGElement eleToClone)
+		public void CloneAttributeList(Element eleToClone)
 		{
 			ArrayList aType = new ArrayList();
 			ArrayList aName = new ArrayList();
@@ -348,7 +348,7 @@ namespace SVGLibrary
 			// copy the attributes
 			for (int i = 0; i < aType.Count; i++ )
 			{
-				AddAttr((SVGAttribute._SvgAttribute) aType[i], aValue[i]);
+				AddAttr((Attribute._SvgAttribute) aType[i], aValue[i]);
 			}
 
 			// copy the value
@@ -392,7 +392,7 @@ namespace SVGLibrary
         #endregion
         #region Private
 
-        protected SVGElement(SVGDocument doc)
+        protected Element(Document doc)
 		{
 			Debug.WriteLine("SvgElement", "SvgElement", "Element created");
 
@@ -400,7 +400,7 @@ namespace SVGLibrary
 
 			m_attributes = new ArrayList();
 
-			AddAttr(SVGAttribute._SvgAttribute.attrCore_Id, null);
+			AddAttr(Attribute._SvgAttribute.attrCore_Id, null);
 
 			m_Parent = null;
 			m_Child = null;
@@ -413,7 +413,7 @@ namespace SVGLibrary
 			m_ElementType = SvgElementType.typeUnsupported;
 		}
 
-		~SVGElement()
+		~Element()
 		{
 			Debug.WriteLine("SvgElement", "SvgElement", "Element destroyed, InternalId:" + m_nInternalId.ToString());
 
@@ -431,7 +431,7 @@ namespace SVGLibrary
 
 			for (int i = 0; i < m_attributes.Count; i++ )
 			{
-				SVGAttribute attr = (SVGAttribute) m_attributes[i];
+				Attribute attr = (Attribute) m_attributes[i];
 				sXML += attr.GetXML();
 			}
 
@@ -467,19 +467,19 @@ namespace SVGLibrary
 			}
 		}
 
-		protected void AddAttr(SVGAttribute._SvgAttribute type, object objValue)
+		protected void AddAttr(Attribute._SvgAttribute type, object objValue)
 		{
-			SVGAttribute attrToAdd = new SVGAttribute(type);
+			Attribute attrToAdd = new Attribute(type);
 			attrToAdd.Value = objValue;
 
 			m_attributes.Add(attrToAdd);
 		}
 
-		internal SVGAttribute GetAttribute(string sName)
+		internal Attribute GetAttribute(string sName)
 		{
 			for (int i = 0; i < m_attributes.Count; i++ )
 			{
-				SVGAttribute attr = (SVGAttribute) m_attributes[i];
+				Attribute attr = (Attribute) m_attributes[i];
 				if ( attr.Name == sName )
 				{
 					return attr;
@@ -489,11 +489,11 @@ namespace SVGLibrary
 			return null;
 		}
 
-		internal SVGAttribute GetAttribute(SVGAttribute._SvgAttribute type)
+		internal Attribute GetAttribute(Attribute._SvgAttribute type)
 		{
 			for (int i = 0; i < m_attributes.Count; i++ )
 			{
-				SVGAttribute attr = (SVGAttribute) m_attributes[i];
+				Attribute attr = (Attribute) m_attributes[i];
 				if ( attr.AttributeType == type )
 				{
 					return attr;
@@ -509,18 +509,18 @@ namespace SVGLibrary
 
 			for (int i = 0; i < m_attributes.Count; i++ )
 			{
-				SVGAttribute attr = (SVGAttribute) m_attributes[i];
+				Attribute attr = (Attribute) m_attributes[i];
 				if ( attr.Name == sName )
 				{
 					switch (attr.AttributeDataType)
 					{
-						case SVGAttribute._SvgAttributeDataType.datatypeString:
-						case SVGAttribute._SvgAttributeDataType.datatypeHRef:
+						case Attribute._SvgAttributeDataType.datatypeString:
+						case Attribute._SvgAttributeDataType.datatypeHRef:
 							{
 								attr.Value = sValue;
 								break;
 							}
-						case SVGAttribute._SvgAttributeDataType.datatypeEnum:
+						case Attribute._SvgAttributeDataType.datatypeEnum:
 							{
 								int nValue = 0;
 								try
@@ -534,7 +534,7 @@ namespace SVGLibrary
 								attr.Value = nValue;
 								break;
 							}
-						case SVGAttribute._SvgAttributeDataType.datatypeColor:
+						case Attribute._SvgAttributeDataType.datatypeColor:
 							{
 								if (sValue == "")
 								{
@@ -547,7 +547,7 @@ namespace SVGLibrary
 								}
 								break;
 							}
-						case SVGAttribute._SvgAttributeDataType.datatypePath:
+						case Attribute._SvgAttributeDataType.datatypePath:
                             {
 								// This is where i would like to expand the path
 								//attr.Value = Path.Decode(sValue);
@@ -565,13 +565,13 @@ namespace SVGLibrary
 			return bReturn;
 		}
 
-		internal bool SetAttributeValue(SVGAttribute._SvgAttribute type, object objValue)
+		internal bool SetAttributeValue(Attribute._SvgAttribute type, object objValue)
 		{
 			bool bReturn = false;
 
 			for (int i = 0; i < m_attributes.Count; i++ )
 			{
-				SVGAttribute attr = (SVGAttribute) m_attributes[i];
+				Attribute attr = (Attribute) m_attributes[i];
 				if ( attr.AttributeType == type )
 				{
 					bReturn = true;
@@ -584,14 +584,14 @@ namespace SVGLibrary
 			return bReturn;
 		}
 
-		internal bool GetAttributeValue(SVGAttribute._SvgAttribute type, out object objValue)
+		internal bool GetAttributeValue(Attribute._SvgAttribute type, out object objValue)
 		{
 			bool bReturn = false;
 			objValue = null;
 
 			for (int i = 0; i < m_attributes.Count; i++ )
 			{
-				SVGAttribute attr = (SVGAttribute) m_attributes[i];
+				Attribute attr = (Attribute) m_attributes[i];
 				if ( attr.AttributeType == type )
 				{
 					bReturn = true;
@@ -604,7 +604,7 @@ namespace SVGLibrary
 			return bReturn;
 		}
 
-		internal object GetAttributeValue(SVGAttribute._SvgAttribute type)
+		internal object GetAttributeValue(Attribute._SvgAttribute type)
 		{
 			object objValue;
 
@@ -618,7 +618,7 @@ namespace SVGLibrary
 			}
 		}
 
-		internal string GetAttributeStringValue(SVGAttribute._SvgAttribute type)
+		internal string GetAttributeStringValue(Attribute._SvgAttribute type)
 		{
 			object objValue = GetAttributeValue(type);
 
@@ -632,7 +632,7 @@ namespace SVGLibrary
 			}
 		}
 
-		internal int GetAttributeIntValue(SVGAttribute._SvgAttribute type)
+		internal int GetAttributeIntValue(Attribute._SvgAttribute type)
 		{
 			object objValue = GetAttributeValue(type);
 
@@ -655,7 +655,7 @@ namespace SVGLibrary
 			}
 		}
 
-		internal Color GetAttributeColorValue(SVGAttribute._SvgAttribute type)
+		internal Color GetAttributeColorValue(Attribute._SvgAttribute type)
 		{
 			object objValue = GetAttributeValue(type);
 
