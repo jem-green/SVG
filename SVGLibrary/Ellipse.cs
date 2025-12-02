@@ -94,7 +94,7 @@ namespace SVGLibrary
 		/// It constructs an ellipse element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Ellipse(Document doc):base(doc)
+		public Ellipse(SVGDocument doc):base(doc)
 		{
 			Init();
 		}
@@ -107,7 +107,7 @@ namespace SVGLibrary
 		/// <param name="sCY"></param>
 		/// <param name="sRX"></param>
 		/// <param name="sRY"></param>
-		public Ellipse(Document doc, string sCX, string sCY, string sRX, string sRY):base(doc)
+		public Ellipse(SVGDocument doc, string sCX, string sCY, string sRX, string sRY):base(doc)
 		{
 			Init();
 

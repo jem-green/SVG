@@ -138,7 +138,7 @@ namespace SVGLibrary
 		/// It constructs an image element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Image(Document doc):base(doc)
+		public Image(SVGDocument doc):base(doc)
 		{
 			Init();
 		}
@@ -153,7 +153,7 @@ namespace SVGLibrary
 		/// <param name="sHeight"></param>
 		/// <param name="sHRef"></param>
 		/// <param name="doc"></param>
-		public Image(Document doc, 
+		public Image(SVGDocument doc, 
 						string sX, 
 						string sY, 
 						string sWidth, 

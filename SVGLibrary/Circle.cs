@@ -76,7 +76,7 @@ namespace SVGLibrary
 		/// It constructs a circle element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Circle(Document doc):base(doc)
+		public Circle(SVGDocument doc):base(doc)
 		{
 			Init();
 		}
@@ -88,7 +88,7 @@ namespace SVGLibrary
 		/// <param name="sCX"></param>
 		/// <param name="sCY"></param>
 		/// <param name="sRadius"></param>
-		public Circle(Document doc, string sCX, string sCY, string sRadius):base(doc)
+		public Circle(SVGDocument doc, string sCX, string sCY, string sRadius):base(doc)
 		{
 			Init();
 

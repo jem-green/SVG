@@ -21,7 +21,7 @@ namespace SVGLibrary
 		/// It constructs a group element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Group(Document doc):base(doc)
+		public Group(SVGDocument doc):base(doc)
 		{
 			m_sElementName = "g";
 			m_ElementType = SvgElementType.typeGroup;

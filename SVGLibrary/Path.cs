@@ -25,7 +25,7 @@ namespace SVGLibrary
 		/// It constructs a path element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Path(Document doc) : base(doc)
+		public Path(SVGDocument doc) : base(doc)
 		{
 			Init();
 		}
@@ -35,7 +35,7 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="doc"></param>
 		/// <param name="sPathData">SVG document.</param>
-		public Path(Document doc, string sPathData) : base(doc)
+		public Path(SVGDocument doc, string sPathData) : base(doc)
 		{
 			Init();
 			PathData = sPathData;

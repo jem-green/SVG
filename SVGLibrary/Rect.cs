@@ -131,7 +131,7 @@ namespace SVGLibrary
 		/// It constructs a rect element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Rect(Document doc):base(doc)
+		public Rect(SVGDocument doc):base(doc)
 		{
 			Init();
 		}
@@ -147,7 +147,7 @@ namespace SVGLibrary
 		/// <param name="sStrokeWidth"></param>
 		/// <param name="colFill"></param>
 		/// <param name="colStroke"></param>
-		public Rect(Document doc, 
+		public Rect(SVGDocument doc, 
 			           string sX, 
 			           string sY, 
 			           string sWidth, 

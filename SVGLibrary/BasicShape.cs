@@ -507,7 +507,7 @@ namespace SVGLibrary
 			}
 		}
 
-		protected BasicShape(Document doc):base(doc)
+		protected BasicShape(SVGDocument doc):base(doc)
 		{
 			AddAttr(Attribute._SvgAttribute.attrCore_XmlBase, null);
 			AddAttr(Attribute._SvgAttribute.attrCore_XmlLang, null);

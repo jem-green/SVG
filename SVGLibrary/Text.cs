@@ -329,7 +329,7 @@ namespace SVGLibrary
 		/// It constructs a text element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Text(Document doc):base(doc)
+		public Text(SVGDocument doc):base(doc)
 		{
 			m_sElementName = "text";
 			m_bHasValue = true;

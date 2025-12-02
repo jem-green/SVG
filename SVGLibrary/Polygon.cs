@@ -41,7 +41,7 @@ namespace SVGLibrary
 		/// It constructs a polygon element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Polygon(Document doc):base(doc)
+		public Polygon(SVGDocument doc):base(doc)
 		{
 			Init();
 		}
@@ -51,7 +51,7 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
 		/// <param name="sPoints"></param>
-		public Polygon(Document doc, string sPoints):base(doc)
+		public Polygon(SVGDocument doc, string sPoints):base(doc)
 		{
 			Init();
 

@@ -18,7 +18,7 @@ namespace SVGLibrary
 	/// </summary>
 	public class Unsupported : Element
 	{
-		public Unsupported(Document doc, string sName):base(doc)
+		public Unsupported(SVGDocument doc, string sName):base(doc)
 		{
 			m_sElementName = sName + ":unsupported";
 			m_ElementType = SvgElementType.typeUnsupported;

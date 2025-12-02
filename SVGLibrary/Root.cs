@@ -90,7 +90,7 @@ namespace SVGLibrary
 			}
 		}
 
-		internal Root(Document doc):base(doc)
+		internal Root(SVGDocument doc):base(doc)
 		{
 			m_sElementName = "svg";
 			m_ElementType = SvgElementType.typeSvg;

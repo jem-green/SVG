@@ -11,7 +11,7 @@ namespace SVGLibrary
 	/// <summary>
 	/// It represents the SVG document.
 	/// </summary>
-	public class Document : IEnumerable
+	public class SVGDocument : IEnumerable
 	{
         #region Fields
 
@@ -35,7 +35,7 @@ namespace SVGLibrary
         /// <summary>
         /// Constructor.
         /// </summary>
-        public Document()
+        public SVGDocument()
 		{
 			_root = null;
 			_nNextId = 1;
@@ -48,7 +48,7 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="Filename">The complete path of a valid SVG file.</param>
 		/// </summary>
-		public Document(string filename)
+		public SVGDocument(string filename)
 		{
 			_root = null;
 			_nNextId = 1;
@@ -967,7 +967,7 @@ namespace SVGLibrary
 		//}
 
 #endregion
-#region Private
+		#region Private
 
         private bool DeleteElement(Element ele, bool bDeleteFromParent)
 		{

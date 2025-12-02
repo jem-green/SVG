@@ -104,7 +104,7 @@ namespace SVGLibrary
 		protected Element m_Previous;
 
 		// document
-		protected Document m_doc;
+		protected SVGDocument m_doc;
 		
 		// internal stuff
 		protected int m_nInternalId;
@@ -392,7 +392,7 @@ namespace SVGLibrary
         #endregion
         #region Private
 
-        protected Element(Document doc)
+        protected Element(SVGDocument doc)
 		{
 			Debug.WriteLine("SvgElement", "SvgElement", "Element created");
 

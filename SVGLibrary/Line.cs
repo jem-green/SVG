@@ -85,7 +85,7 @@ namespace SVGLibrary
 		/// It constructs an line element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Line(Document doc):base(doc)
+		public Line(SVGDocument doc):base(doc)
 		{
 			Init();
 		}
@@ -99,7 +99,7 @@ namespace SVGLibrary
 		/// <param name="sX2"></param>
 		/// <param name="sY2"></param>
 		/// <param name="col"></param>
-		public Line(Document doc, string sX1, string sY1, string sX2, string sY2, Color col):base(doc)
+		public Line(SVGDocument doc, string sX1, string sY1, string sX2, string sY2, Color col):base(doc)
 		{
 			Init();
 

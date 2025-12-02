@@ -12,7 +12,7 @@ namespace SVGConsole
     {
         static void Main(string[] args)
         {
-            Document svgDocument = new Document();
+            SVGDocument svgDocument = new SVGDocument();
             svgDocument.Load("test.svg");
             SHPDocument shpDocument = new SHPDocument();
             foreach (DictionaryEntry kvp in svgDocument)

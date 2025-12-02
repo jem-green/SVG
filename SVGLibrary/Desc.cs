@@ -42,7 +42,7 @@ namespace SVGLibrary
 		/// It constructs a desc element with no attribute.
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
-		public Desc(Document doc):base(doc)
+		public Desc(SVGDocument doc):base(doc)
 		{
 			Init();
 		}
@@ -52,7 +52,7 @@ namespace SVGLibrary
 		/// </summary>
 		/// <param name="doc">SVG document.</param>
 		/// <param name="sValue"></param>
-		public Desc(Document doc, string sValue):base(doc)
+		public Desc(SVGDocument doc, string sValue):base(doc)
 		{
 			Init();
 
